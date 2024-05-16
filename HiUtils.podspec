@@ -16,6 +16,9 @@ Pod::Spec.new do |s|
   s.frameworks = 'Foundation', 'UIKit'
   
   s.source_files = 'HiUtils/**/*'
-  s.dependency 'FCUUID', '1.3.1'
+  s.dependency 'FCUUID', '~> 1.0'
+  s.dependency 'DeviceKit', '~> 5.0'
+  s.dependency 'ObjectMapper', '~> 4.0'
+  s.dependency 'SwifterSwift', '~> 6.0'
   
 end
