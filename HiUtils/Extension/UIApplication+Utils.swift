@@ -41,10 +41,6 @@ public extension UIApplication {
         return ""
     }
     
-    var urlScheme: String {
-        self.urlScheme(name: "app") ?? ""
-    }
-    
     var name: String {
         self.displayName ?? self.bundleName
     }
@@ -81,40 +77,5 @@ public extension UIApplication {
     @objc var pageStart: Int { 0 }
     
     @objc var pageSize: Int { 20 }
-    
-    @objc var baseApiUrl: String {
-        var domain = self.linkDomains.first ?? ""
-        if domain.isEmpty {
-            domain = "\(self.urlScheme).com"
-        }
-        return "https://\(domain)"
-    }
-    
-    @objc var baseWebUrl: String {
-        var domain = self.linkDomains.first ?? ""
-        if domain.isEmpty {
-            domain = "\(self.urlScheme).com"
-        }
-        return "https://\(domain)"
-    }
-    
-    func urlScheme(name: String) -> String? {
-        var scheme: String? = nil
-        if let types = Bundle.main.infoDictionary?["CFBundleURLTypes"] as? Array<Dictionary<String, Any>> {
-            for info in types {
-                if let urlName = info["CFBundleURLName"] as? String,
-                   urlName == name {
-                    if let urlSchemes = info["CFBundleURLSchemes"] as? [String] {
-                        scheme = urlSchemes.first
-                    }
-                }
-            }
-        }
-        return scheme
-    }
-
-    var linkDomains: [String] {
-        Bundle.main.infoDictionary?["linkDomains"] as? [String] ?? []
-    }
     
 }

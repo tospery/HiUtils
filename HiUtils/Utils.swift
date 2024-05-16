@@ -333,12 +333,6 @@ public protocol ImageSource {
 extension URL: ImageSource {}
 extension UIImage: ImageSource {}
 
-public enum HiToastStyle: Int {
-    case success
-    case failure
-    case warning
-}
-
 public enum HiPagingStyle: Int, Codable {
     case basic
     case navigationBar
@@ -398,21 +392,4 @@ public func preferredValue(small: CGFloat, middle: CGFloat, large: CGFloat) -> C
     } else {
         return middle
     }
-}
-
-
-public func popOne(viewController: UIViewController, animated: Bool, _ completion: (() -> Void)?) {
-    viewController.navigationController?.popViewController(animated: animated, completion)
-}
-
-public func popTo(viewController: UIViewController, to: UIViewController, animated: Bool, _ completion: (() -> Void)?) {
-    viewController.navigationController?.popToViewController(to, animated: animated)
-}
-
-public func popAll(viewController: UIViewController, animated: Bool, _ completion: (() -> Void)?) {
-    viewController.navigationController?.popToRootViewController(animated: animated)
-}
-
-public func dismiss(viewController: UIViewController, animated: Bool, _ completion: (() -> Void)?) {
-    viewController.dismiss(animated: animated, completion: completion)
 }
