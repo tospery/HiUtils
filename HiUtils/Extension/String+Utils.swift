@@ -24,5 +24,13 @@ public extension String {
         self = self.replacingOccurrences(of: UIApplication.shared.bundleName + ".", with: "")
         self = self.replacingOccurrences(of: "HiUtils.", with: "")
     }
+    
+    var hashColor: UIColor {
+        let hashValue = self.hashValue
+        let red = CGFloat((hashValue & 0xFF0000) >> 16) / 255.0
+        let green = CGFloat((hashValue & 0x00FF00) >> 8) / 255.0
+        let blue = CGFloat(hashValue & 0x0000FF) / 255.0
+        return UIColor(red: red, green: green, blue: blue, alpha: 1.0)
+    }
 
 }
